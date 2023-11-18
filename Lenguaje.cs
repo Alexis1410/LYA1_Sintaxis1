@@ -218,21 +218,67 @@ namespace LYA1_Sintaxis1
         //While -> while(Condicion) bloque de instrucciones | instruccion
         private void While()
         {
+            match("while");
+            match("(");
+            Condicion();
+            match(")");
+            if (getContenido() == "{")
+            {
+                bloqueInstrucciones();
+            }
+            else
+            {
+                Instruccion();
+            }
 
         }
         //Do -> do bloque de instrucciones | intruccion while(Condicion)
         private void Do()
         {
+            match("Do");
+           if (getContenido() == "{")
+            {
+                bloqueInstrucciones();
+            }
+            else
+            {
+                Instruccion();
+            } 
+            While();
+            match(";");
 
+           
         }
         //For -> for(Asignacion Condicion; Incremento) Bloque de instruccones | Intruccion 
         private void For()
         {
+            match("For");
+            match("(");
+            Asignacion();
+            match(";");
+            Condicion();
+            match(";");
+            match("");
+            Incremento();
+            match(")");
+
+            if (getContenido() == "{")
+            {
+                bloqueInstrucciones();
+            }
+            else
+            {
+                Instruccion();
+            }
+           
 
         }
         //Incremento -> Identificador ++ | --
         private void Incremento()
         {
+            match(Tipos.Identificador);
+           match(Tipos.IncrementoTermino);
+            
 
         }
         //--------------------------------Unidad 6--------------------------------->

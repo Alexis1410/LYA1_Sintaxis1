@@ -61,14 +61,14 @@ namespace LYA1_Sintaxis1
             archivo = new StreamReader("prueba.cpp");
             log = new StreamWriter("prueba.log");
             log.AutoFlush = true;
-            linea = 0;
+            linea = 1;
         }
         public Lexico(string nombre)
         {
             archivo = new StreamReader(nombre);
             log = new StreamWriter("prueba.log");
             log.AutoFlush = true;
-            linea = 0;
+            linea = 1;
         }
         public void Dispose()
         {
