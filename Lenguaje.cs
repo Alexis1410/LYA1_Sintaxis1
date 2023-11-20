@@ -1,6 +1,7 @@
 using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 
 /*
@@ -158,9 +159,11 @@ namespace LYA1_Sintaxis1
         private void Asignacion()
         {
             match(Tipos.Identificador);
-            if (getClasificacion() == Tipos.OperadorTermino)
+            if (getClasificacion() == Tipos.IncrementoTermino)
             {
-                match(Tipos.OperadorTermino);
+                match(Tipos.IncrementoTermino);
+                if(getContenido() == "(")
+                Expresion();
             }
             else if (getClasificacion() == Tipos.IncrementoTermino)
             {
@@ -244,7 +247,10 @@ namespace LYA1_Sintaxis1
             {
                 Instruccion();
             } 
-            While();
+            match("While");
+            match("(");
+            Condicion();
+            match(")");
             match(";");
 
            

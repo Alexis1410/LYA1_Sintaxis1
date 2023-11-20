@@ -66,3 +66,21 @@ y = Identificador
 x = Identificador
 -- = IncrementoTermino
 ; = FinSentencia
+x = Identificador
+*= = IncrementoFactor
+( = Caracter
+x = Identificador
+- = OperadorTermino
+7 = Numero
+) = Caracter
+; = FinSentencia
+printf = Identificador
+( = Caracter
+"\nValor de altura = " = Cadena
+) = Caracter
+; = FinSentencia
+scanf = Identificador
+( = Caracter
+"%d" = Cadena
+, = Caracter
+& = Caracter
