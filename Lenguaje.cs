@@ -134,7 +134,8 @@ namespace LYA1_Sintaxis1
             match("printf");
             match("(");
             match(Tipos.Cadena);
-            if (getContenido() == ",") {
+            if (getContenido() == ",")
+            {
                 match(",");
                 match(Tipos.Identificador);
             }
@@ -147,8 +148,10 @@ namespace LYA1_Sintaxis1
             match("scanf");
             match("(");
             match(Tipos.Cadena);
-            if (getContenido() == ",") {
+            if (getContenido() == ",")
+            {
                 match(",");
+                match("&");
                 match(Tipos.Identificador);
             }
             match(")");
@@ -162,8 +165,8 @@ namespace LYA1_Sintaxis1
             if (getClasificacion() == Tipos.IncrementoTermino)
             {
                 match(Tipos.IncrementoTermino);
-                if(getContenido() == "(")
-                Expresion();
+                if (getContenido() == "(")
+                    Expresion();
             }
             else if (getClasificacion() == Tipos.IncrementoTermino)
             {
@@ -202,11 +205,11 @@ namespace LYA1_Sintaxis1
             if (getContenido() == "else")
             {
                 match("else");
-                 if (getContenido() == "{")
-            {
-                bloqueInstrucciones();
-            }
-            
+                if (getContenido() == "{")
+                {
+                    bloqueInstrucciones();
+                }
+
             }
 
         }
@@ -235,37 +238,36 @@ namespace LYA1_Sintaxis1
             }
 
         }
-        //Do -> do bloque de instrucciones | intruccion while(Condicion)
+        //Do -> do bloque de instrucciones | intruccion while(Condicion);
         private void Do()
         {
             match("Do");
-           if (getContenido() == "{")
+            if (getContenido() == "{")
             {
                 bloqueInstrucciones();
             }
             else
             {
                 Instruccion();
-            } 
+            }
             match("While");
             match("(");
             Condicion();
             match(")");
             match(";");
 
-           
+
         }
         //For -> for(Asignacion Condicion; Incremento) Bloque de instruccones | Intruccion 
         private void For()
         {
-            match("For");
+            match("for");
             match("(");
             Asignacion();
-            match(";");
             Condicion();
             match(";");
-            match("");
             Incremento();
+            match("");
             match(")");
 
             if (getContenido() == "{")
@@ -276,15 +278,15 @@ namespace LYA1_Sintaxis1
             {
                 Instruccion();
             }
-           
+
 
         }
         //Incremento -> Identificador ++ | --
         private void Incremento()
         {
             match(Tipos.Identificador);
-           match(Tipos.IncrementoTermino);
-            
+            match(Tipos.IncrementoTermino);
+
 
         }
         //--------------------------------Unidad 6--------------------------------->
