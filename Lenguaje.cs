@@ -9,6 +9,8 @@ using System.Threading.Tasks;
     Requerimiento 2: Scanf -> scanf(cadena,&Identificador);
     Requerimiento 3: Agregar a la Asignacion +=, -=, *=. /=, %=
                      Ejemplo:
+                     Identificador++:
+                     Identificador--
                      Identificador IncrementoTermino Expresion;
                      Identificador IncrementoFactor Expresion;
     Requerimiento 4: Agregar el else optativo al if
@@ -162,11 +164,14 @@ namespace LYA1_Sintaxis1
         private void Asignacion()
         {
             match(Tipos.Identificador);
-            if (getClasificacion() == Tipos.IncrementoTermino)
+            if (getContenido() == "++")
             {
-                match(Tipos.IncrementoTermino);
-                if (getContenido() == "(")
-                    Expresion();
+                match("++");
+
+            }
+            else if (getContenido() == "--")
+            {
+                match("--");
             }
             else if (getClasificacion() == Tipos.IncrementoTermino)
             {
@@ -209,9 +214,11 @@ namespace LYA1_Sintaxis1
                 {
                     bloqueInstrucciones();
                 }
-
+                else
+                {
+                    Instruccion();
+                }
             }
-
         }
         //Condicion -> Expresion operadoRelacional Expresion
         private void Condicion()
@@ -241,8 +248,8 @@ namespace LYA1_Sintaxis1
         //Do -> do bloque de instrucciones | intruccion while(Condicion);
         private void Do()
         {
-            match("Do");
-            if (getContenido() == "{")
+            match("do");
+            if (getContenido() == "(")
             {
                 bloqueInstrucciones();
             }
@@ -250,13 +257,11 @@ namespace LYA1_Sintaxis1
             {
                 Instruccion();
             }
-            match("While");
+            match("while");
             match("(");
             Condicion();
             match(")");
             match(";");
-
-
         }
         //For -> for(Asignacion Condicion; Incremento) Bloque de instruccones | Intruccion 
         private void For()
@@ -267,9 +272,7 @@ namespace LYA1_Sintaxis1
             Condicion();
             match(";");
             Incremento();
-            match("");
             match(")");
-
             if (getContenido() == "{")
             {
                 bloqueInstrucciones();
@@ -278,16 +281,19 @@ namespace LYA1_Sintaxis1
             {
                 Instruccion();
             }
-
-
         }
         //Incremento -> Identificador ++ | --
         private void Incremento()
         {
-            match(Tipos.Identificador);
-            match(Tipos.IncrementoTermino);
-
-
+           match(Tipos.Identificador);
+            if (getContenido() == "++" )
+            {
+            match("++");
+            }
+            if (getContenido() == "--")
+            {
+            match("--");   
+            }
         }
         //--------------------------------Unidad 6--------------------------------->
         //Main      -> void main() bloqueInstrucciones

@@ -11,7 +11,7 @@ namespace LYA1_Sintaxis1
         {
             Identificador,Numero,Caracter,Asignacion,FinSentencia,FinArchivo,OpLogico,OperadorRelacional,OperadorTermino,IncrementoTermino,
             OperadorFactor,IncrementoFactor,OpTernario,Cadena,Inicio,Fin,
-            tipoDatos, reservada
+            tipoDatos, reservada,
         }
         private string contenido;
         private Tipos  clasificacion;
