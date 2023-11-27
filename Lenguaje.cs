@@ -249,7 +249,7 @@ namespace LYA1_Sintaxis1
         private void Do()
         {
             match("do");
-            if (getContenido() == "(")
+            if (getContenido() == "{")
             {
                 bloqueInstrucciones();
             }
@@ -287,13 +287,9 @@ namespace LYA1_Sintaxis1
         {
            match(Tipos.Identificador);
             if (getContenido() == "++" )
-            {
             match("++");
-            }
             if (getContenido() == "--")
-            {
             match("--");   
-            }
         }
         //--------------------------------Unidad 6--------------------------------->
         //Main      -> void main() bloqueInstrucciones
